@@ -9,18 +9,18 @@ import Image from "next/image";
 const galleryImages = [
   {
     src: "/gallery/20103774-4.jpg",
-    alt: "Galeri SMKS Muara Indonesia Jakarta",
-    caption: "Kegiatan Sekolah",
+    alt: "Suasana kegiatan SMKS Muara Indonesia Jakarta",
+    caption: "Kegiatan Belajar",
   },
   {
     src: "/gallery/20103774-5.jpg",
-    alt: "Galeri SMKS Muara Indonesia Jakarta",
-    caption: "Kegiatan Sekolah",
+    alt: "Aktivitas siswa SMKS Muara Indonesia Jakarta",
+    caption: "Aktivitas Siswa",
   },
   {
     src: "/gallery/20103774-6.jpg",
-    alt: "Galeri SMKS Muara Indonesia Jakarta",
-    caption: "Kegiatan Sekolah",
+    alt: "Lingkungan sekolah SMKS Muara Indonesia Jakarta",
+    caption: "Lingkungan Sekolah",
   },
 ];
 
@@ -54,17 +54,17 @@ export default function SchoolGallery() {
         <div className="flex">
           {galleryImages.map((image, index) => (
             <div className="relative min-w-0 flex-[0_0_100%]" key={index}>
-              <div className="relative aspect-[16/9] md:aspect-[16/7] w-full">
+              <div className="relative aspect-[16/9] w-full overflow-hidden md:aspect-[16/7]">
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
                   priority={index === 0}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 hover:scale-[1.03]"
                 />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/60 to-transparent p-4 md:p-6">
                 <span className="text-sm text-white/90">{image.caption}</span>
               </div>
             </div>
