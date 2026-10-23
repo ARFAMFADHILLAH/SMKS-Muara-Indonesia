@@ -10,6 +10,9 @@
   body {
     @apply bg-[#F8FAFC] text-[#0F172A] font-sans antialiased leading-relaxed;
   }
+  :focus-visible {
+    @apply outline-none ring-2 ring-amber-500 ring-offset-2;
+  }
 }
 
 @layer components {
@@ -25,11 +28,23 @@
   .nav-inner {
     @apply max-w-6xl mx-auto px-6 flex items-center justify-between h-16;
   }
+  .nav-link {
+    @apply inline-flex items-center gap-1 px-3 py-2 text-sm text-slate-600 transition-colors hover:text-slate-900;
+  }
+  .nav-link-active {
+    @apply text-slate-900;
+  }
+  .nav-dropdown-panel {
+    @apply absolute left-0 top-full z-50 pt-2;
+  }
+  .nav-drawer {
+    @apply fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t border-slate-200/70 bg-white;
+  }
   .card {
     @apply bg-white border border-slate-200/70 rounded-2xl;
   }
   .btn-gold {
-    @apply inline-flex items-center justify-center gap-1.5 bg-amber-500 text-slate-900 px-5 py-2 text-sm font-semibold hover:bg-amber-600 transition-colors;
+    @apply inline-flex items-center justify-center gap-1.5 bg-amber-300 text-slate-900 px-5 py-2 text-sm font-semibold hover:bg-amber-600 transition-colors;
   }
   .btn-dark {
     @apply inline-flex items-center justify-center gap-1.5 bg-slate-900 text-white px-6 py-2.5 text-sm font-semibold hover:bg-slate-800 transition-colors;

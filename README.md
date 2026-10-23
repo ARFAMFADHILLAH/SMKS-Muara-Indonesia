@@ -1,8 +1,8 @@
 # SMKS Muara Indonesia Jakarta — Company Profile
 
-Website profil dan landing page **SMKS Muara Indonesia Jakarta**, sekolah menengah kejuruan swasta terakreditasi A di Jatinegara, Jakarta Timur. Situs ini menyajikan profil sekolah, program keahlian, fasilitas, galeri kegiatan, testimoni, serta informasi kontak dan lokasi dalam satu halaman yang bersih dan responsif.
+Website profil dan landing page **SMKS Muara Indonesia Jakarta**, sekolah menengah kejuruan swasta terakreditasi A di Jatinegara, Jakarta Timur. Situs ini menyajikan profil sekolah, sapaan kepala sekolah, program keahlian, fasilitas, kegiatan ekstrakurikuler, galeri kegiatan, berita dan informasi PPDB, testimoni, serta informasi kontak dan lokasi dalam satu halaman yang bersih dan responsif.
 
-Dibangun dengan **Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS 3**, dengan animasi ringan (fade-up & count-up), carousel galeri, dan peta lokasi interaktif.
+Dibangun dengan **Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS 3**, dengan animasi ringan (fade-up & count-up), navbar dropdown, carousel galeri, dan peta lokasi interaktif.
 
 ## Informasi Sekolah
 
@@ -22,8 +22,11 @@ Dibangun dengan **Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS
 ## Fitur Utama
 
 **Header**
-- Navbar tetap (fixed) dengan logo sekolah dan menu Beranda, Profil, Kurikulum, Fasilitas, Galeri, Testimoni, Kontak
-- Tombol CTA "Daftar Sekarang (PPDB)" berwarna Amber Gold
+- Navbar tetap (fixed) dengan logo sekolah dan tombol CTA "Daftar Sekarang (PPDB)" berwarna Amber Gold
+- Dropdown navigasi desktop: "Profil Sekolah" (Profil Umum, Kepala Sekolah, Kurikulum, Fasilitas) dan "Kesiswaan" (Ekstrakurikuler, Galeri, Berita & Informasi)
+- Tautan langsung: Beranda, Testimoni, Kontak
+- Menu mobile (hamburger + drawer) dengan grup dropdown yang bisa dibuka-tutup
+- Scroll-spy: item menu aktif ditandai sesuai section yang sedang terlihat
 
 **Hero**
 - Layout split: teks utama di kiri, foto sekolah di kanan
@@ -33,6 +36,9 @@ Dibangun dengan **Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS
 **Profil**
 - Statistik sekolah dengan animasi count-up (318 siswa, 16 guru, 6.000 m², akreditasi A)
 - Ringkasan profil dan kartu data sekolah (kurikulum, rombel, ruang kelas, lab, perpustakaan, daya listrik)
+
+**Kepala Sekolah**
+- Foto (dengan slot placeholder), nama, jabatan, sapaan, blok tanda tangan, dan ringkasan singkat
 
 **Keunggulan**
 - Section berlatar navy dengan 4 alasan memilih sekolah (Terakreditasi A, Kurikulum SMK Merdeka, Praktik Kerja Industri, Lingkungan Islami)
@@ -44,8 +50,15 @@ Dibangun dengan **Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS
 **Fasilitas**
 - Angka fasilitas dengan animasi count-up (21 ruang kelas, 2 laboratorium, 1 perpustakaan)
 
+**Ekstrakurikuler**
+- Grid 8 kegiatan di luar kelas (Rohis, Pramuka, PMR, Pencak Silat, Futsal, Basket, Kaligrafi, Choir & Marching Band)
+
 **Galeri**
 - Carousel otomatis (auto-slide 4 detik) dengan navigasi panah dan indikator, serta efek hover zoom
+
+**Berita & Informasi**
+- Artikel unggulan (1 besar + 3 ringkas) dengan badge kategori, tanggal, dan tautan "Baca selengkapnya"
+- Strip Informasi PPDB: gelombang pendaftaran, syarat dokumen, dan kontak panitia
 
 **Testimoni**
 - Kartu ulasan dengan rating bintang dan tautan ke ulasan Google Maps
@@ -96,7 +109,14 @@ npm run start      # jalankan hasil build
 │   │   ├── layout.tsx                   # root layout + font + metadata
 │   │   ├── page.tsx                     # landing page utama
 │   │   └── globals.css                  # style global + animasi
+│   ├── lib/
+│   │   └── siteData.ts                  # data navigasi, kepala sekolah, ekstrakurikuler, berita
 │   └── components/
+│       ├── SiteNav.tsx                  # navbar dropdown + drawer mobile (client)
+│       ├── SectionLabel.tsx             # label judul section
+│       ├── PrincipalSection.tsx         # section kepala sekolah
+│       ├── ExtracurricularSection.tsx    # section ekstrakurikuler
+│       ├── NewsSection.tsx              # section berita + informasi PPDB
 │       ├── SchoolGallery.tsx            # carousel galeri
 │       ├── ScrollReveal.tsx             # animasi on-scroll (IntersectionObserver)
 │       ├── CountUp.tsx                  # animasi angka dari 0
@@ -120,6 +140,10 @@ Turunan dari logo resmi sekolah:
 
 ## Catatan
 
+- **Semua data konten terpusat**: navigasi, data kepala sekolah, daftar ekstrakurikuler, dan artikel berita berada di `src/lib/siteData.ts`. Ubah di satu file itu untuk memperbarui seluruh situs.
+- **Placeholder**: data kepala sekolah, daftar ekstrakurikuler, artikel berita, dan jadwal PPDB masih berupa contoh. Ganti dengan data asli sebelum situs dipublikasikan.
+- **Foto kepala sekolah**: taruh foto di `public/guru/` lalu isi `principal.photo` di `src/lib/siteData.ts` dengan path-nya. Kosongkan lagi untuk kembali ke tampilan placeholder.
+- **Navigasi**: dropdown desktop dan drawer mobile memakai data `navEntries`. Section baru wajib memakai `id` yang sama dengan `href` di `navEntries` agar scroll-spy dan anchor bekerja.
 - **Foto & logo**: letakkan file di `public/logo/` dan `public/gallery/`. Untuk mengganti gambar, cukup tukar file dengan nama yang sama atau sesuaikan path pada `src/components/SchoolGallery.tsx` dan `src/app/page.tsx`.
 - **Testimoni**: saat ini menggunakan contoh ulasan. Ganti isi array `testimonials` di `src/components/Testimonials.tsx` dengan ulasan asli dari Google Maps.
 - **Peta lokasi**: menggunakan embed Google Maps berbasis koordinat tanpa API key. Untuk marker yang lebih presisi, sesuaikan parameter `q`/`ll` pada `iframe` di `src/app/page.tsx`.

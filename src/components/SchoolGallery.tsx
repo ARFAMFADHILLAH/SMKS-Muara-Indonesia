@@ -53,14 +53,17 @@ export default function SchoolGallery() {
       <div className="overflow-hidden border border-slate-200/70" ref={emblaRef}>
         <div className="flex">
           {galleryImages.map((image, index) => (
-            <div className="relative min-w-0 flex-[0_0_100%]" key={index}>
-              <div className="relative aspect-[16/9] w-full overflow-hidden md:aspect-[16/7]">
+            <div
+              className="relative min-w-0 flex-[0_0_88%] sm:flex-[0_0_58%] md:flex-[0_0_45%] lg:flex-[0_0_32%]"
+              key={index}
+            >
+              <div className="relative aspect-[3/4] w-full overflow-hidden">
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
                   priority={index === 0}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                  sizes="(max-width: 639px) 88vw, (max-width: 767px) 58vw, (max-width: 1023px) 45vw, 32vw"
                   className="object-cover transition-transform duration-700 hover:scale-[1.03]"
                 />
               </div>
