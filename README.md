@@ -9,15 +9,15 @@ Dibangun dengan **Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS
 | Data | Keterangan |
 | --- | --- |
 | Nama | SMKS MUARA INDONESIA JAKARTA |
-| NPSN | 20103774 |
+| NPSN | 201xxxx |
 | Akreditasi | A |
 | Status | Swasta (Yayasan Pendidikan Islam Al-Chairiyah Cipinang Muara) |
 | Kurikulum | SMK Merdeka Manajemen Perkantoran (K) |
 | Penyelenggaraan | Sehari Penuh / 5 Hari |
 | Alamat | JL. Cipinang Muara 3 Kav PLN, Kec. Jatinegara, Kota Adm. Jakarta Timur, D.K.I. Jakarta |
 | Koordinat | -6.2213, 106.8929 |
-| Telepon | 021-8500965 |
-| Email | muaraindonesia965@yahoo.co.id |
+| Telepon | 021-8500xxx |
+| Email | muaraxxxxxxx@yahoo.co.id |
 
 ## Fitur Utama
 
